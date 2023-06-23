@@ -14,6 +14,7 @@ body {
   background-image: url(./Img/imgprin.webp);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .background-galery{
@@ -319,7 +320,7 @@ a{
   padding: 0.2rem;
   margin: 0.1rem;
 }
-.btn
+.boton
 {
     position: relative;
     width: 20rem;
@@ -339,13 +340,13 @@ a{
    overflow: hidden;
    margin: 5rem;
 }
-.btn:hover
+.boton:hover
 {
     padding-left: 0px;
     padding-right: 40px;
     color: rgba(175, 143, 55,1);
 }
-.btn span
+.boton span
 {
   position: absolute;
   left: 5px;
@@ -362,11 +363,11 @@ a{
   padding: 0.2rem;
   margin: 0.1rem;
 }
-.btn:hover span
+.boton:hover span
 {
     left: calc(100% - 55px);
 }
-.btn:after
+.boton:after
 {
  content: '';
  position: absolute;
@@ -377,10 +378,35 @@ a{
  transform: translateX(-170px) skewX(30deg);
  transition: 0.75s ease-in-out;
 }
-.btn:hover:after{
+.boton:hover:after{
     transform: translateX(170px) skewX(30deg);
 }
 
+
+/* CONTROL-INSUMOS */
+
+
+
+.formInsumos {
+  width: 50%;
+  margin: 2rem;
+}
+
+
+.formInsumos p {
+  font-style: italic;
+  color: rgb(97, 61, 31);
+}
+
+.listaDeInsumos {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+.listaDeInsumos ul li {
+  list-style: none;
+}
 /*Media Queries*/
 
 @media only screen and (min-width: 768px) {
