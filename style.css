@@ -7,6 +7,21 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+
+}
+
+.background-home{
+  background-image: url(./Img/imgprin.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background-galery{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background-image: url(./Img/imgfondo.webp);
+background-repeat: no-repeat;
+background-size: contain;
+
 }
 
 header {
@@ -80,14 +95,6 @@ header button a {
 
 }
 
-.imgfondo img {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  z-index: -1;
-}
 
 .presentacion {
   position: relative;
@@ -95,12 +102,14 @@ header button a {
   margin: 8rem 2rem;
   text-align: center;
   line-height: 2rem;
+  height: 100vh;
 }
 
 .presentacion h3 {
   color: #A77A42;
   font-style: italic;
   margin-bottom: 2rem;
+
 }
 
 .presentacion button {
@@ -133,6 +142,8 @@ header button a {
       "img5 img6 ma2 img7 img8"
       "img9 img10 img11 ma3 img12";
   gap: 1rem 1rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .galeria img {
