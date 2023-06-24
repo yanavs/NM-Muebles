@@ -14,8 +14,7 @@
     <title>NM Muebles</title>
 </head>
 
-<body>
-    <section class="background-home">
+<body class="bodyUsuario" id="bodyUsuario">
 
         <header>
             <img src="/Img/logo.svg" alt="Logo Nm Muebles">
@@ -63,35 +62,50 @@
             </form>
             <section id="lista-de-insumos" class="listaDeInsumos"></section>
         </section>
-    </section>
+    
+
+    <footer class="footerUsuario">
+        <menu class="menu">
 
 
-    <footer>
-        <div class="logo">
-            <img src="/Img/logo2.svg" alt="logo">
-        </div>
+            <button class="menu__item active" style="--bgColorItem: #A77A42;" >
+                <a href="/indexUsuario.html">
+                <img src="/img/icono-menu-inicio.svg" alt="icono-menu-cargar-pedido" class="icon">
+            </a>
+              </button>
 
-        <div class="form">
-            <h3>Suscríbete para recibir novedades</h3>
-            <form>
-                <input type="email" placeholder="Introduce tu correo electrónico" name="email" required>
-                <input type="submit">
-            </form>
-        </div>
-
-        <div class="redes">
-            <h3>Contactanos!</h3>
-            <div class="redes-link">
-                <img src="/Img/instagram.svg" alt="instagram">
-                <a href="https://www.instagram.com/nmmuebles/" target="_blank">Nm Muebles</a>
-            </div>
+            <button class="menu__item active" style="--bgColorItem: #A77A42;" >
+              <img src="/img/icono-menu-cargar-pedido.svg" alt="icono-menu-cargar-pedido" class="icon">
+            </button>
+        
+            <button class="menu__item" style="--bgColorItem: #A77A42;">
+                <img src="/img/icono-agenda-pedidos.svg" alt="icono-menu-cargar-pedido" class="icon">
+            </button>
+        
+            <button class="menu__item" style="--bgColorItem: #A77A42;" >
+                <img src="/img/icono-menu-insumos.svg" alt="icono-menu-cargar-pedido" class="icon">
+            </button>
+        
+            <button class="menu__item" style="--bgColorItem: #A77A42;" >
+                <img src="/img/icono-menu-optimizador.svg" alt="icono-menu-cargar-pedido" class="icon">
+            </button>
+        
+            <div class="menu__border"></div>
+        
+          </menu>
+        
+          <section class="svg-container">
+            <!-- para que el menu genere la ondita -->
+            <svg viewBox="0 0 202.9 45.5" >
+              <clipPath id="menu" clipPathUnits="objectBoundingBox" transform="scale(0.0049285362247413 0.021978021978022)">
+                <path  d="M6.7,45.5c5.7,0.1,14.1-0.4,23.3-4c5.7-2.3,9.9-5,18.1-10.5c10.7-7.1,11.8-9.2,20.6-14.3c5-2.9,9.2-5.2,15.2-7
+                  c7.1-2.1,13.3-2.3,17.6-2.1c4.2-0.2,10.5,0.1,17.6,2.1c6.1,1.8,10.2,4.1,15.2,7c8.8,5,9.9,7.1,20.6,14.3c8.3,5.5,12.4,8.2,18.1,10.5
+                  c9.2,3.6,17.6,4.2,23.3,4H6.7z"/>
+              </clipPath>
+            </svg>
+          </section>
     </footer>
 
-    <div class="whatsapp">
-        <a href="https://wa.link/su1o25" target="_blank">
-            <img src="/Img/whatsapp.svg" alt="whatsapp">
-        </a>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -99,6 +113,8 @@
 
 
     <script src="/js/controlInsumos.js"></script>
+    <script src="/js/botonera-usuarios.js"></script>
+    </section>
 </body>
 
 </html>

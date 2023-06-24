@@ -6,22 +6,25 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+overflow-x: hidden;
 
 }
 
 .background-home{
-  background-image: url(./Img/imgprin.webp);
+  background-image: url(./Img/img-fondo-usuario.webp);
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background-size: contain;
+  width: 100%;
+  
+ 
 }
 
 .background-galery{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 background-image: url(./Img/imgfondo.webp);
 background-repeat: no-repeat;
-background-size: contain;
+background-size: cover;
+width: 100%;
 
 }
 
@@ -30,6 +33,7 @@ header {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   position: relative;
+  width: 100vw;
 }
 
 header img {
@@ -314,6 +318,7 @@ input[type="submit"]:hover {
 }
 
 /*USUARIO-HOME*/
+
 a{
   text-decoration: none;
   color: #694c29;
@@ -384,7 +389,10 @@ a{
 
 
 /* CONTROL-INSUMOS */
-
+.contenido{
+  width: 100%;
+  float: left;
+}
 
 
 .formInsumos {
@@ -407,6 +415,133 @@ a{
 .listaDeInsumos ul li {
   list-style: none;
 }
+
+
+/*BOTONERA USUARIO*/
+html {
+
+  --bgColorMenu :  RGB(247, 238, 226);
+  --duration: .7s;
+}
+
+
+.bodyUsuario{
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--duration);
+  display: flex;
+  flex-direction: column;
+  background-image: url(/Img/img-fondo-usuario.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu{
+  margin: 0;
+  display: flex;
+  /* Works well with 100% width  */
+  width: 100vw;
+  font-size: 1.5em;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bgColorMenu);
+  bottom: 0px;
+}
+
+.menu__item{
+  all: unset;
+  flex-grow: 1;
+  z-index: 100;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  align-items: center;
+  will-change: transform;
+  justify-content: center;
+  padding: 0.55em 0 0.85em;
+  transition: transform var(--timeOut , var(--duration));
+}
+
+.menu__item::before{
+  content: "";
+  z-index: -1;
+  width: 4.2em;
+  height: 4.2em;
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0);
+  transition: background-color var(--duration), transform var(--duration);
+}
+
+.menu__item.active {
+  transform: translate3d(0, -.8em , 0);
+}
+
+.menu__item.active::before{
+  transform: scale(1);
+  background-color: var(--bgColorItem);
+}
+
+.icon{
+  width: 2.6em;
+  height: 2.6em;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1pt;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+}
+
+.menu__item.active .icon {
+  animation: strok 1.5s reverse;
+}
+
+@keyframes strok {
+  100% {
+      stroke-dashoffset: 400;
+  }
+}
+
+.menu__border{
+  left: 0;
+  bottom: 99%;
+  width: 10.9em;
+  height: 2.4em;
+  position: absolute;
+  clip-path: url(#menu);
+  will-change: transform;
+  background-color: var(--bgColorMenu);
+  transition: transform var(--timeOut , var(--duration));
+}
+
+.svg-container {
+  width: 0;
+  height: 0;
+}
+
+@media screen and (max-width: 50em) {
+  .menu{
+      font-size: .8em;
+  }
+}
+
+.footerUsuario{
+  background-color:transparent;
+  align-items:end;
+  margin-top: 2rem;
+  
+}
+
 /*Media Queries*/
 
 @media only screen and (min-width: 768px) {
