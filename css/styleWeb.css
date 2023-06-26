@@ -7,24 +7,25 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 overflow-x: hidden;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+height: 100vh;
+position: absolute;
+bottom: 0;
 
 }
 
-.background-home{
-  background-image: url(./Img/img-fondo-usuario.webp);
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%;
-  
- 
-}
 
-.background-galery{
+.background{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-background-image: url(./Img/imgfondo.webp);
+background-image: url(/Img/imgfondo.webp);
 background-repeat: no-repeat;
-background-size: cover;
+background-size:contain;
 width: 100%;
+
+
+
 
 }
 
@@ -100,14 +101,24 @@ header button a {
 
 }
 
+.contenido{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  justify-content: space-around;
+  height: 80vh;
+}
 
 .presentacion {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 40%;
   margin: 8rem 2rem;
   text-align: center;
   line-height: 2rem;
-  height: 100vh;
+  height: 80vh;
 }
 
 .presentacion h3 {
@@ -138,6 +149,18 @@ header button a {
 
 }
 
+.imgLateral{
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  
+}
+
+.imgLateral img{
+  width: 70%;
+
+}
+
 .galeria {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -153,7 +176,7 @@ header button a {
 
 .galeria img {
   width: 80%;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin: 1rem;
 }
 
@@ -317,230 +340,6 @@ input[type="submit"]:hover {
   z-index: 1;
 }
 
-/*USUARIO-HOME*/
-
-a{
-  text-decoration: none;
-  color: #694c29;
-  padding: 0.2rem;
-  margin: 0.1rem;
-}
-.boton
-{
-    position: relative;
-    width: 20rem;
-    height: 60px;
-    background: rgba(175, 143, 55, 0.1);
-    border-radius:1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgba(90, 73, 27, 0.5);
-    text-decoration: none;
-    letter-spacing: 2px;
-    border-top:0.5px solid rgba(175, 143, 55,0.35);
-    border-left:0.5px solid rgba(175, 143, 55,0.35);
-   padding-left: 4rem;
-   transition: 0.5s;
-   overflow: hidden;
-   margin: 5rem;
-}
-.boton:hover
-{
-    padding-left: 0px;
-    padding-right: 40px;
-    color: rgba(175, 143, 55,1);
-}
-.boton span
-{
-  position: absolute;
-  left: 5px;
-  width: 50px;
-  height: 50px;
-  background:rgba(175, 143, 55);
-  border-radius: 50%;
-  transition: 0.5s ease-in-out;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 1.5em;
-  padding: 0.2rem;
-  margin: 0.1rem;
-}
-.boton:hover span
-{
-    left: calc(100% - 55px);
-}
-.boton:after
-{
- content: '';
- position: absolute;
- width: 80px;
- height:100%;
- z-index: 1;
- background: rgba(175, 143, 55,0.25);
- transform: translateX(-170px) skewX(30deg);
- transition: 0.75s ease-in-out;
-}
-.boton:hover:after{
-    transform: translateX(170px) skewX(30deg);
-}
-
-
-/* CONTROL-INSUMOS */
-.contenido{
-  width: 100%;
-  float: left;
-}
-
-
-.formInsumos {
-  width: 50%;
-  margin: 2rem;
-}
-
-
-.formInsumos p {
-  font-style: italic;
-  color: rgb(97, 61, 31);
-}
-
-.listaDeInsumos {
-  display: flex;
-  flex-wrap: wrap;
-  width: 60%;
-}
-
-.listaDeInsumos ul li {
-  list-style: none;
-}
-
-
-/*BOTONERA USUARIO*/
-html {
-
-  --bgColorMenu :  RGB(247, 238, 226);
-  --duration: .7s;
-}
-
-
-.bodyUsuario{
-  margin: 0;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-  align-items: center;
-  justify-content: space-between;
-
-  -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--duration);
-  display: flex;
-  flex-direction: column;
-  background-image: url(/Img/img-fondo-usuario.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.menu{
-  margin: 0;
-  display: flex;
-  /* Works well with 100% width  */
-  width: 100vw;
-  font-size: 1.5em;
-  position: absolute;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--bgColorMenu);
-  bottom: 0px;
-}
-
-.menu__item{
-  all: unset;
-  flex-grow: 1;
-  z-index: 100;
-  display: flex;
-  cursor: pointer;
-  position: relative;
-  border-radius: 50%;
-  align-items: center;
-  will-change: transform;
-  justify-content: center;
-  padding: 0.55em 0 0.85em;
-  transition: transform var(--timeOut , var(--duration));
-}
-
-.menu__item::before{
-  content: "";
-  z-index: -1;
-  width: 4.2em;
-  height: 4.2em;
-  border-radius: 50%;
-  position: absolute;
-  transform: scale(0);
-  transition: background-color var(--duration), transform var(--duration);
-}
-
-.menu__item.active {
-  transform: translate3d(0, -.8em , 0);
-}
-
-.menu__item.active::before{
-  transform: scale(1);
-  background-color: var(--bgColorItem);
-}
-
-.icon{
-  width: 2.6em;
-  height: 2.6em;
-  stroke: white;
-  fill: transparent;
-  stroke-width: 1pt;
-  stroke-miterlimit: 10;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 400;
-}
-
-.menu__item.active .icon {
-  animation: strok 1.5s reverse;
-}
-
-@keyframes strok {
-  100% {
-      stroke-dashoffset: 400;
-  }
-}
-
-.menu__border{
-  left: 0;
-  bottom: 99%;
-  width: 10.9em;
-  height: 2.4em;
-  position: absolute;
-  clip-path: url(#menu);
-  will-change: transform;
-  background-color: var(--bgColorMenu);
-  transition: transform var(--timeOut , var(--duration));
-}
-
-.svg-container {
-  width: 0;
-  height: 0;
-}
-
-@media screen and (max-width: 50em) {
-  .menu{
-      font-size: .8em;
-  }
-}
-
-.footerUsuario{
-  background-color:transparent;
-  align-items:end;
-  margin-top: 2rem;
-  
-}
 
 /*Media Queries*/
 
