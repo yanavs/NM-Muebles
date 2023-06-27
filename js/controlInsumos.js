@@ -23,17 +23,20 @@ function guardarInsumosEnAlmacenamientoLocal() { //Esta función guarda la lista
   //Guardo la lista actualizada de los insumos en el almacenamiento local después de cargar los productos.
 }
 
-function eliminarInsumo(nombre) {
-    insumosCargados = insumosCargados.filter((insumos) => insumos.nombre != nombre);
+function eliminarInsumo(nombre, caracteristicas) {
+  insumosCargados = insumosCargados.filter((insumos) => {
+    return insumos.nombre !== nombre || insumos.caracteristicas !== caracteristicas;
+  });
+
+  cargarInsumos();
+  guardarInsumosEnAlmacenamientoLocal();
+}
   
-    cargarInsumos();
-    guardarInsumosEnAlmacenamientoLocal();
-  }
-  
-  function editarStock(nombre) {
+  function editarStock(nombre,caracteristicas) {
     // Buscar el insumo específico por su nombre y caracteristicas
-    const insumoSeleccionado = insumosCargados.find((insumos) => insumos.nombre === nombre);
-  
+    const insumoSeleccionado = insumosCargados.find((insumos) => {
+    return insumos.nombre  === nombre || insumos.caracteristicas  === caracteristicas;
+    })
     if (insumoSeleccionado) {
       // Solicitar al usuario el nuevo valor del stock
       const nuevoStock = prompt("Ingrese el nuevo stock:");
@@ -66,8 +69,8 @@ function cargarInsumos() {
     } 
 
     ul.innerHTML += `
-    <button id="boton-eliminar" class="btn btn-dark" onclick="eliminarInsumo('${insumos.nombre}')">Eliminar</button>
-    <button id="boton-editar-Stock" class="btn btn-light" onclick="editarStock('${insumos.nombre}')">Editar Stock</button>
+    <button id="boton-eliminar" class="btn btn-dark" onclick="eliminarInsumo('${insumos.nombre}','${insumos.caracteristicas}')">Eliminar</button>
+    <button id="boton-editar-Stock" class="btn btn-light" onclick="editarStock('${insumos.nombre}','${insumos.caracteristicas}')">Editar Stock</button>
   `;
   
     
