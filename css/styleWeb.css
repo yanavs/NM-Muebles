@@ -108,6 +108,7 @@ header button a {
   margin-top: 2rem;
   justify-content: space-around;
   height: 80vh;
+  margin-top: 2rem;
 }
 
 .presentacion {
@@ -488,4 +489,18 @@ input[type="submit"]:hover {
   .redes .redes-link {
       margin-right: 50px;
   }
+}
+
+/*NOSOTROS*/
+.textoNosotros{
+  padding: 1rem
+  ;
+}
+
+.textoNosotros p{
+  width: 60%;
+  margin: 0 auto;
+font-size: 1.3rem;
+  text-align: justify;
+  line-height: 2.6rem;
 }
