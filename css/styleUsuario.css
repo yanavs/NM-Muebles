@@ -394,7 +394,119 @@ input[type="submit"]:hover {
 
 .footerUsuario {
   background-color: transparent;
-  align-items: end;
+
   margin-top: 2rem;
 
+}
+
+/*OPIMIZADOR DE CORTE*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.contenido {
+  display: flex;
+}
+
+.formulario {
+  margin: 2rem;
+  width: 40%;
+}
+
+.formulario p {
+  font-weight: 600;
+}
+
+
+.input-group-text {
+  background-color: beige;
+  border-color: rgb(177, 153, 74);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.btn {
+  background-color: beige;
+  border-color: rgb(177, 153, 74);
+  color: rgb(177, 153, 74);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-secondary {
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(185, 165, 76);
+}
+
+
+
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+}
+
+.medidaExteriorContainer {
+  display: flex;
+}
+
+.medidaAnchoExterior {
+  position: absolute;
+  left: 7%;
+}
+
+.medidaLargoExterior {
+  position: absolute;
+  top: 20%;
+  writing-mode: vertical-lr;
+  /*para girar el texto */
+}
+
+svg {
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+
+.listaCortes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  
+}
+
+.filasCortes {
+  display: flex;
+  flex-direction: row;
+}
+
+.listaCantidad,
+.listaAncho,
+.listaLongitud {
+  width: 16%;
+}
+
+.registroForm{
+  width: 70%;
+  height: 80vh;
+}
+
+.registroForm p {
+  font-weight: 600;
+  font-size: 2rem;
 }
