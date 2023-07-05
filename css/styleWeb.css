@@ -504,3 +504,31 @@ font-size: 1.3rem;
   text-align: justify;
   line-height: 2.6rem;
 }
+/*CONTACTO*/
+.formContacto{ 
+  width: 80%;
+}
+.formContacto p{
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.btn {
+  background-color: beige;
+  border-color: rgb(177, 153, 74);
+  color: rgb(177, 153, 74);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-secondary {
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: rgb(177, 153, 74);
+}
+
+.botonContacto{
+  width: 100%;
+}
