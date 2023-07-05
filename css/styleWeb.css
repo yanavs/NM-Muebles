@@ -107,7 +107,7 @@ header button a {
   margin: 0 auto;
   margin-top: 2rem;
   justify-content: space-around;
-  height: 80vh;
+  height: auto;
   margin-top: 2rem;
 }
 
@@ -492,6 +492,15 @@ input[type="submit"]:hover {
 }
 
 /*NOSOTROS*/
+
+.nosotros{
+  display: flex;
+  align-items: center;
+}
+
+.nosotros img{
+  height: 60%;
+}
 .textoNosotros{
   padding: 1rem
   ;
