@@ -446,8 +446,8 @@ body {
   width: 100%;
 }
 
-.btn-secondary:hover {
-  background-color: rgb(185, 165, 76);
+.btn:hover {
+  background-color: rgb(177, 153, 74);
 }
 
 
@@ -506,7 +506,17 @@ svg {
   height: 80vh;
 }
 
-.registroForm p {
+.registroForm, .agenda p {
   font-weight: 600;
   font-size: 2rem;
 }
+.registroTable{
+  width: 100%;
+  justify-content: space-around;
+}
+.agenda{
+  width: 80%;
+  height: 80vh;
+  justify-content: space-around;
+}
+

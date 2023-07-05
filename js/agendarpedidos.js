@@ -1,21 +1,45 @@
 function mostrarRegistros() {
     var registros = JSON.parse(localStorage.getItem("registros")) || [];
-    var registroList = document.getElementById("registroList");
-
-    registroList.innerHTML = "";
+    var registroTable = document.getElementById("registroTable").getElementsByTagName("tbody")[0];
+    registroTable.innerHTML = ""; // Limpiar el contenido de la tabla
 
     registros.forEach(function(registro, index) {
-        var listItem = document.createElement("li");
-        listItem.innerHTML = "<strong>Cliente:</strong> " + registro.clientName +
-                             "<br><strong>Producto:</strong> " + registro.productName +
-                             "<br><strong>Cantidad:</strong> " + registro.quantity +
-                             "<br><strong>Precio:</strong> " + registro.price +
-                             "<br><strong>Fecha de entrega:</strong> " + registro.deliveryDate +
-                             "<br><strong>Fecha de inicio:</strong> " + registro.startDate +
-                             "<button onclick='editarRegistro(" + index + ")'>Editar</button>" +
-                             "<button onclick='borrarRegistro(" + index + ")'>Borrar</button>";
+        var row = registroTable.insertRow();
 
-        registroList.appendChild(listItem);
+        var nombreClienteCell = row.insertCell();
+        nombreClienteCell.innerHTML = registro.clientName;
+
+        var productoCell = row.insertCell();
+        productoCell.innerHTML = registro.productName;
+
+        var cantidadCell = row.insertCell();
+        cantidadCell.innerHTML = registro.quantity;
+
+        var precioCell = row.insertCell();
+        precioCell.innerHTML = registro.price;
+
+        var fechaInicioCell = row.insertCell();
+        fechaInicioCell.innerHTML = registro.startDate;
+
+        var fechaEntregaCell = row.insertCell();
+        fechaEntregaCell.innerHTML = registro.deliveryDate;
+
+        var accionesCell = row.insertCell();
+        var editButton = document.createElement("button");
+        editButton.innerHTML = "Editar";
+        editButton.classList = "btn";
+        editButton.onclick = function() {
+            editarRegistro(index);
+        };
+        accionesCell.appendChild(editButton);
+
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Borrar";
+        deleteButton.classList = "btn";
+        deleteButton.onclick = function() {
+            borrarRegistro(index);
+        };
+        accionesCell.appendChild(deleteButton);
     });
 }
 

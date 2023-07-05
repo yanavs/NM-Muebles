@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,24 +13,43 @@
     <link rel="stylesheet" href="/css/styleUsuario.css">
     <title>NM Muebles</title>
 </head>
-<body class="agenda">
+
+
+<body>
     <section class="background">
         <header>
             <img src="/Img/logo.svg" alt="Logo Nm Muebles">
 
         </header>
 
+
+        <section class="contenido">
+
+            <section class="agenda">
+                <p class="ListaDeRegistros">Agenda de Pedidos</p>
+
+
+                <table id="registroTable" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre de cliente</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Fecha de inicio</th>
+                            <th scope="col">Fecha de entrega</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+
+                    </tbody>
+                </table>
+
+
+            </section>
+        </section>
     </section>
-    <section class="contenido">
-
-    <h1 class="ListaDeRegistros">Agenda de Pedidos</h1>
-
-    <ul id="registroList">
-        <button onclick='editarRegistro(" + index + ")'>Editar</button>
-        <button onclick='borrarRegistro(" + index + ")'>Borrar</button>
-    </ul>
-
-</section>
     <footer class="footerUsuario">
 
         <menu class="menu">
@@ -40,33 +60,33 @@
                     <img src="/img/icono-menu-inicio.svg" alt="icono-menu-inicio" class="icon">
                 </a>
             </button>
-    
+
             <button class="menu__item " style="--bgColorItem: #A77A42;">
                 <a href="./Cargar-pedidos.html">
-                <img src="/img/icono-menu-cargar-pedido.svg" alt="icono-menu-cargar-pedido" class="icon">
-              </a>
+                    <img src="/img/icono-menu-cargar-pedido.svg" alt="icono-menu-cargar-pedido" class="icon">
+                </a>
             </button>
-    
+
             <button class="menu__item active" style="--bgColorItem: #A77A42;">
                 <a href="./Agenda_de_pedidos.html">
-                <img src="/img/icono-agenda-pedidos.svg" alt="icono-menu-agenda-pedidos" class="icon">
-              </a>
+                    <img src="/img/icono-agenda-pedidos.svg" alt="icono-menu-agenda-pedidos" class="icon">
+                </a>
             </button>
-    
+
             <button class="menu__item" style="--bgColorItem: #A77A42;">
                 <a href="./Control_stock.html">
-                <img src="/img/icono-menu-insumos.svg" alt="icono-menu-control-insumos" class="icon">
-              </a>
+                    <img src="/img/icono-menu-insumos.svg" alt="icono-menu-control-insumos" class="icon">
+                </a>
             </button>
-    
+
             <button class="menu__item " style="--bgColorItem: #A77A42;">
                 <a href="./Optimizador_corte.html">
-                <img src="/img/icono-menu-optimizador.svg" alt="icono-menu-optimizador" class="icon">
-              </a>
+                    <img src="/img/icono-menu-optimizador.svg" alt="icono-menu-optimizador" class="icon">
+                </a>
             </button>
-    
+
             <div class="menu__border"></div>
-    
+
         </menu>
 
         <section class="svg-container">
@@ -92,4 +112,5 @@
     <script src="/js/botonera-usuarios.js"></script>
     </section>
 </body>
+
 </html>
