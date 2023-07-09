@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100vh;
+  
 
 
 }
@@ -20,7 +20,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-image: url(/Img/imgfondo.webp);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ header {
   grid-template-rows: 1fr;
   position: relative;
   width: 100vw;
-  
+
 }
 
 header img {
@@ -79,7 +79,7 @@ header img {
 /*USUARIO-HOME*/
 
 .botonera {
-  width: 50%;
+
   margin-left: 3rem;
 }
 
@@ -164,7 +164,7 @@ a {
 .formInsumos {
   width: 50%;
   margin: 2rem;
-  
+
 }
 
 
@@ -196,30 +196,13 @@ html {
 }
 
 
-.bodyUsuario {
-  margin: 0;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-  align-items: center;
-  justify-content: space-between;
-
-  -webkit-tap-highlight-color: transparent;
-  transition: background-color var(--duration);
-  display: flex;
-  flex-direction: column;
-  background-image: url(/Img/img-fondo-usuario.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
 .menu {
   margin: 0;
   display: flex;
-  /* Works well with 100% width  */
   width: 100vw;
   font-size: 1.5em;
-position: relative;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   background-color: var(--bgColorMenu);
@@ -244,8 +227,8 @@ position: relative;
 .menu__item::before {
   content: "";
   z-index: -1;
-  width: 4.2em;
-  height: 4.2em;
+  width: 4.2rem;
+  height: 4.2rem;
   border-radius: 50%;
   position: absolute;
   transform: scale(0);
@@ -253,7 +236,7 @@ position: relative;
 }
 
 .menu__item.active {
-  transform: translate3d(0, -.8em, 0);
+  transform: translate3d(0, -.8rem, 0);
 }
 
 .menu__item.active::before {
@@ -262,8 +245,8 @@ position: relative;
 }
 
 .icon {
-  width: 2.6em;
-  height: 2.6em;
+  width: 2.6rem;
+  height: 2.6rem;
   stroke: white;
   fill: transparent;
   stroke-width: 1pt;
@@ -286,8 +269,8 @@ position: relative;
 .menu__border {
   left: 0;
   bottom: 99%;
-  width: 10.9em;
-  height: 2.4em;
+  width: 10.9rem;
+  height: 2.4rem;
   position: absolute;
   clip-path: url(#menu);
   will-change: transform;
@@ -401,14 +384,23 @@ input[type="submit"]:hover {
 
 /*OPIMIZADOR DE CORTE*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
 }
 
-body {
-  font-family: Arial, sans-serif;
+
+.placa1 svg,
+.placa2 svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .contenido {
@@ -451,34 +443,19 @@ body {
 }
 
 
-
 .contenedor {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+ 
 
 }
 
-.medidaExteriorContainer {
-  display: flex;
-}
-
-.medidaAnchoExterior {
-  position: absolute;
-  left: 7%;
-}
-
-.medidaLargoExterior {
-  position: absolute;
-  top: 20%;
-  writing-mode: vertical-lr;
-  /*para girar el texto */
-}
 
 svg {
-  margin-top: 2rem;
-  margin-left: 3rem;
+  margin-top: 1rem;
+  margin-left: 0rem;
 }
 
 .listaCortes {
@@ -487,7 +464,16 @@ svg {
   width: 100%;
   justify-content: space-between;
   text-align: center;
-  
+
+}
+
+
+.pedidos{
+  color: #694c29;
+  font-size: 1.2rem;
+  font-style: oblique;
+  font-weight: 600;
+  text-align: center;
 }
 
 .filasCortes {
@@ -501,22 +487,124 @@ svg {
   width: 16%;
 }
 
-.registroForm{
+.registroForm {
   width: 70%;
   height: 80vh;
 }
 
-.registroForm, .agenda p {
+.registroForm,
+.agenda p {
   font-weight: 600;
   font-size: 2rem;
 }
-.registroTable{
+
+.registroTable {
   width: 100%;
   justify-content: space-around;
 }
-.agenda{
+
+.agenda {
   width: 80%;
   height: 80vh;
   justify-content: space-around;
 }
 
+/*Media Queries*/
+
+@media screen and (max-width:767px) {
+
+
+
+  .contenido {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 1rem;
+
+  }
+
+  .imgLateral {
+    display: none;
+  }
+
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 1rem;
+  }
+
+
+
+  header button {
+    display: none;
+  }
+
+  .presentacion {
+    width: 80vw;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+
+
+  .background {
+
+    margin: 0 auto;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+
+  }
+
+ 
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .logo img {
+    width: 70%;
+  }
+
+  .botonera {
+    margin: 0;
+  }
+
+.registroForm, .formInsumos{
+  width: 100%;
+  justify-content: space-around;
+}
+
+.registroForm, .input-group{
+  margin-top: 3rem;
+}
+
+  .registroForm p, .agenda p, .formInsumos p, .formulario p {
+    font-size: 1.5rem;
+    font-style: oblique;
+    width: auto;
+   
+
+  }
+
+  .agenda {
+    overflow-x: auto;
+    width: 100%;
+        margin-bottom: 1rem;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+       
+}
+
+
+.formulario{
+height: 50%;
+width: 100%;
+}
+
+}

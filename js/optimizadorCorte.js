@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     const svg1 = d3.select("#placa1 svg");
     const svg2 = d3.select("#placa2 svg");
-  
+  //--Variables de los materiales
+  const idDelProyectoInput = document.getElementById("id-del-proyecto");
+  const materialInput = document.getElementById("material");
+  const botonGuardarMateriales = document.getElementById("botonGuardarMateriales");
+  const idDelMaterialInput = document.getElementById("id-del-material");
+  const pedidos = document.getElementById("pedidos");
+
+
     //--Variables de la placa
     const widthInput = document.getElementById("ancho");
     const heightInput = document.getElementById("alto");
@@ -21,41 +28,84 @@ document.addEventListener("DOMContentLoaded", function () {
     const botonActualizarPlaca = document.querySelector("#botonActualizarPlaca");
   
     const mensajeConfirmacion = document.getElementById("confirmacion-empleado-cargado")
+
+    const botonImprimir = document.getElementById("botonImprimir")
   
+
     let placaWidth = 0;
     let placaHeight = 0;
+
+    let datosAInscribirse = {
+      NombreDeProyecto: "",
+      Material: "",
+      ID: "",
+    };
   
+    function imprimirPagina() {
+      window.print();
+    }
+
+    function renderizarLista() {
+      
+
+      datosAInscribirse = {
+        ...datosAInscribirse,
+        NombreDeProyecto: idDelProyectoInput.value,
+        Material: materialInput.value,
+        ID: idDelMaterialInput.value,
+      };
+    
+      const pedidos = document.getElementById("pedidos");
+      pedidos.textContent = `Proyecto: ${datosAInscribirse.NombreDeProyecto}, en ${datosAInscribirse.Material}, color ${datosAInscribirse.ID}`;
+    }
+
     function dibujarRectangulo(svg) {
-      placaWidth = parseInt(widthInput.value);
-      placaHeight = parseInt(heightInput.value);
+      placaWidth = parseFloat(widthInput.value);
+      placaHeight = parseFloat(heightInput.value);
   
       if (!isNaN(placaWidth) && !isNaN(placaHeight)) {
         svg.attr("width", placaWidth / 3);
         svg.attr("height", placaHeight / 3);
-        svg.style("background-color", "gray");
+        svg.style("background-color", "beige");
+        svg.style("fill", "white");
+    svg.attr("preserveAspectRatio", "xMidYMid meet");
+    svg.attr("viewBox", `0 0 ${placaWidth/3} ${placaHeight/3}`);
+
+    // Agregar medida de ancho exterior
+    svg.append("text")
+      .attr("x", placaWidth / 6) // Posición x del texto
+      .attr("y", placaHeight / 3 - 10) // Posición y del texto
+      .text(`${placaWidth}mm`) // Contenido del texto
+      .attr("text-anchor", "middle") // Alineación horizontal del texto al centro
+      .style("font-size", "12px") // Tamaño de la fuente del texto
+    .style("fill", "black");
+
+    // Agregar medida de largo exterior
+    svg.append("text")
+      .attr("x", 5) // Posición x del texto
+      .attr("y", placaHeight / 6) // Posición y del texto
+      .text(`${placaHeight}mm`) // Contenido del texto
+      .attr("text-anchor", "start") // Alineación horizontal del texto a la izquierda
+      .style("font-size", "12px")// Tamaño de la fuente del texto
+      .style("fill", "black")
+      .style("writing-mode", "vertical-rl");
+
+    
       }
   
-      const textoMedidaAnchoExterior = document.getElementById(
-        "medidaAnchoExterior"
-      );
-      textoMedidaAnchoExterior.textContent = `${placaWidth}mm`;
   
-      const textoMedidaLargoExterior = document.getElementById(
-        "medidaLargoExterior"
-      );
-      textoMedidaLargoExterior.textContent = `${placaHeight}mm`;
     }
   
   
     
     function renderizarCortes() {
-      const cantidadCorte = parseInt(cantidadCorteInput.value);
-      const anchoCorte = parseInt(anchoCorteInput.value);
-      const longitudCorte = parseInt(longitudCorteInput.value);
+      const cantidadCorte = parseFloat(cantidadCorteInput.value);
+      const anchoCorte = parseFloat(anchoCorteInput.value);
+      const longitudCorte = parseFloat(longitudCorteInput.value);
   
       if (!isNaN(cantidadCorte) && !isNaN(anchoCorte) && !isNaN(longitudCorte)) {
         // Crear una nueva fila en la tabla de cortes
-        const fila = document.createElement("tr");
+        const fila = document.getElementById("tbodyCortes").insertRow();
   
         // Crear las celdas de la fila con los valores de los cortes
         const celdaCantidad = document.createElement("td");
@@ -102,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Agregar el event listener al botón de editar
         botonEditar.addEventListener("click", function () {
           const celdaCantidad = fila.cells[0];
-          const cantidadActual = parseInt(celdaCantidad.textContent);
+          const cantidadActual = parseFloat(celdaCantidad.textContent);
   
           // Solicitar al usuario la nueva cantidad de cortes
           const nuevaCantidad = prompt("Ingrese la nueva cantidad de cortes:", cantidadActual);
@@ -115,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Por favor, ingrese un valor numérico válido.");
           }
          
+        
         
           dibujarCortes();
         });
@@ -143,10 +194,10 @@ document.addEventListener("DOMContentLoaded", function () {
       svg1.selectAll("rect").remove();
       svg2.selectAll("rect").remove();
   
-      let x1 = 1;
-      let y1 = 1;
-      let x2 = 1;
-      let y2 = 1;
+      let x1 = 0;
+      let y1 = 0;
+      let x2 = 0;
+      let y2 = 0;
       let maxHeight1 = 0; // Altura máxima de los cortes en la placa 1
       let maxHeight2 = 0; // Altura máxima de los cortes en la placa 2
       let placasLlenas = false; // Indica si ambas placas están llenas
@@ -155,8 +206,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const cortesOrdenados = Array.from(
         tbodyCortes.getElementsByTagName("tr")
       ).sort((a, b) => {
-        const longitudA = parseInt(a.cells[2].textContent);
-        const longitudB = parseInt(b.cells[2].textContent);
+        const longitudA = parseFloat(a.cells[2].textContent);
+        const longitudB = parseFloat(b.cells[2].textContent);
         return longitudB - longitudA;
       });
   
@@ -165,23 +216,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const fila = cortesOrdenados[i];
   
         // Obtener los valores de cada celda en la fila
-        const cantidad = parseInt(fila.cells[0].textContent);
-        const ancho = parseInt(fila.cells[1].textContent) / 3;
-        const longitud = parseInt(fila.cells[2].textContent) / 3;
+        const cantidad = parseFloat(fila.cells[0].textContent);
+        const ancho = parseFloat(fila.cells[1].textContent) / 3;
+        const longitud = parseFloat(fila.cells[2].textContent) / 3;
   
         // Dibujar los rectángulos correspondientes en los SVG de las placas
         for (let j = 0; j < cantidad; j++) {
           // Verificar si los rectángulos caben en la placa 1
           if (x1 + ancho > svg1.attr("width")) {
-            x1 = 1; // Reiniciar la posición en x al principio de la fila
-            y1 += maxHeight1 + 1; // Aumentar la posición en y al siguiente nivel de cortes
+            x1 = 0; // Reiniciar la posición en x al principio de la fila
+            y1 += maxHeight1; // Aumentar la posición en y al siguiente nivel de cortes
             maxHeight1 = 0; // Reiniciar la altura máxima de los cortes en una fila
           }
   
           // Verificar si los rectángulos caben en la placa 2
           if (x2 + ancho > svg2.attr("width")) {
-            x2 = 1; // Reiniciar la posición en x al principio de la fila
-            y2 += maxHeight2 + 1; // Aumentar la posición en y al siguiente nivel de cortes
+            x2 = 0; // Reiniciar la posición en x al principio de la fila
+            y2 += maxHeight2; // Aumentar la posición en y al siguiente nivel de cortes
             maxHeight2 = 0; // Reiniciar la altura máxima de los cortes en una fila
           }
   
@@ -201,16 +252,17 @@ document.addEventListener("DOMContentLoaded", function () {
               .attr("y", y1)
               .attr("width", ancho)
               .attr("height", longitud)
-              .style("fill", "red")
-              .style("stroke", "black")
+              .style("fill", "silver")
+              .style("stroke", "gray")
               .style("stroke-width", 1);
+              
   
             // Generar un ID único para el rectángulo y asignarlo como atributo de datos
             const idRectangulo = `rect-${i}-${j}`;
             rectangulo.attr("data-id-rectangulo", idRectangulo);
   
             // Actualizar la posición x para el próximo rectángulo en la placa 1
-            x1 += ancho + 1; // Espacio horizontal entre rectángulos
+            x1 += ancho ; // Espacio horizontal entre rectángulos
   
             // Actualizar la altura máxima de los cortes en la placa 1 si es necesario
             if (longitud > maxHeight1) {
@@ -226,8 +278,8 @@ document.addEventListener("DOMContentLoaded", function () {
               .attr("y", y2)
               .attr("width", ancho)
               .attr("height", longitud)
-              .style("fill", "red")
-              .style("stroke", "black")
+              .style("fill", "silver")
+              .style("stroke", "gray")
               .style("stroke-width", 1);
   
             // Generar un ID único para el rectángulo y asignarlo como atributo de datos
@@ -235,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rectangulo.attr("data-id-rectangulo", idRectangulo);
   
             // Actualizar la posición x para el próximo rectángulo en la placa 2
-            x2 += ancho + 1; // Espacio horizontal entre rectángulos
+            x2 += ancho; // Espacio horizontal entre rectángulos
   
             // Actualizar la altura máxima de los cortes en la placa 2 si es necesario
             if (longitud > maxHeight2) {
@@ -269,9 +321,14 @@ document.addEventListener("DOMContentLoaded", function () {
   
     botonListaCortes.addEventListener("click", (evento) => {
       evento.preventDefault();
+    
       renderizarCortes();
+      renderizarLista();
     });
-  
+
+    botonImprimir.addEventListener("click", (evento) =>{
+      imprimirPagina()
+    })
   
   });
   
